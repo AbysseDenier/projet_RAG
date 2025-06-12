@@ -33,8 +33,8 @@ cd ton_repo_rag
 ### 3. Créer et activer un environnement virtuel Python
 
 ```bash
-python3.11 -m venv venv
-source venv/bin/activate
+python3.11 -m venv venv_rag_project
+source venv_rag_project/bin/activate
 ```
 
 ### 4. Installer les dépendances Python
