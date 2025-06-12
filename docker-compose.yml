@@ -6,9 +6,9 @@ services:
     image: ollama/ollama
     container_name: ollama
     ports:
-      - "11434:11434"  # Port par défaut de l'API Ollama
+      - "11434:11434"  
     volumes:
-      - ollama_data:/root/.ollama  # Persistance des modèles téléchargés
+      - ollama_data:/root/.ollama 
     restart: unless-stopped
 
   db:
@@ -19,9 +19,9 @@ services:
       POSTGRES_PASSWORD: rag_password
       POSTGRES_DB: rag_db
     ports:
-      - "5433:5432"  # Port PostgreSQL standard
+      - "5433:5432" 
     volumes:
-      - pg_data:/var/lib/postgresql/data  # Persistance des données
+      - pg_data:/var/lib/postgresql/data  
     restart: unless-stopped
 
 volumes:

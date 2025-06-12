@@ -12,7 +12,7 @@ conn = psycopg2.connect(
 )
 cursor = conn.cursor()
 
-# 1. Activer pgvector + Recréer proprement la table
+# Créer table
 cursor.execute("""
     CREATE EXTENSION IF NOT EXISTS vector;
 
@@ -27,10 +27,10 @@ cursor.execute("""
 """)
 conn.commit()
 
-# 2. Charger le modèle d'embedding
+# modèle d'embedding
 model = SentenceTransformer('all-MiniLM-L6-v2')  # léger (~100 Mo)
 
-# 3. Ingestion des fichiers dans documents/
+# Ingestion des fichiers dans documents/
 document_dir = "documents"
 
 for file_name in os.listdir(document_dir):
@@ -38,12 +38,12 @@ for file_name in os.listdir(document_dir):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # 4. Générer l'embedding
+    # Générer l'embedding
     embedding = model.encode(content)
     print(
         f"Embedding pour {file_name} : {embedding[:10]}... (total {len(embedding)} valeurs)")
 
-    # 5. Insérer dans PostgreSQL
+    # Insérer dans bdd psql
     cursor.execute(
         "INSERT INTO documents (filename, content, embedding) VALUES (%s, %s, %s)",
         (file_name, content, embedding.tolist())

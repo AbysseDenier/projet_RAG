@@ -18,19 +18,17 @@ cursor = conn.cursor()
 # Charger le modèle d'embedding
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-# Demander un prompt à l’utilisateur
+# prompt utilisateur
 prompt = input("Pose ta question : ")
 
-# Embedding du prompt
+# prompt embedding
 prompt_embedding = model.encode(prompt).tolist()
 
-# Requête SQL pgvector : top 3 documents les plus proches (cosine distance)
+# Requête SQL pgvector = top 3 documents les plus proches (selon cosine distance)
 cursor.execute(
     "SELECT content FROM documents ORDER BY embedding <=> %s::vector LIMIT 3;",
     (prompt_embedding,)
 )
-
-# Récupérer les documents les plus proches
 results = cursor.fetchall()
 context = "\n\n".join([row[0] for row in results])
 
@@ -63,10 +61,9 @@ try:
 except Exception as e:
     answer = f"Erreur lors de l’appel à Ollama via Docker : {e}"
 
-# Affichage de la réponse
+# Réponse llm
 print("\n Réponse du LLM :")
 print(answer)
 
-# Nettoyage
 cursor.close()
 conn.close()
