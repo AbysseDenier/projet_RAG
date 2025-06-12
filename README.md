@@ -26,8 +26,8 @@ Ce projet met en œuvre un système de **RAG** (Retrieval-Augmented Generation) 
 ### 2. Cloner le repo
 
 ```bash
-git clone https://github.com/ton_utilisateur/ton_repo_rag.git
-cd ton_repo_rag
+git clone https://github.com/AbysseDenier/projet_RAG.git
+cd projet_RAG
 ```
 
 ### 3. Créer et activer un environnement virtuel Python
