@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"  # Port par défaut de l'API Ollama
+    volumes:
+      - ollama_data:/root/.ollama  # Persistance des modèles téléchargés
+    restart: unless-stopped
+
+  db:
+    image: ankane/pgvector  # Image officielle PostgreSQL + pgvector
+    container_name: pgvector
+    environment:
+      POSTGRES_USER: rag_user
+      POSTGRES_PASSWORD: rag_password
+      POSTGRES_DB: rag_db
+    ports:
+      - "5433:5432"  # Port PostgreSQL standard
+    volumes:
+      - pg_data:/var/lib/postgresql/data  # Persistance des données
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  pg_data:
