@@ -26,22 +26,7 @@ examples = cursor.fetchall()
 
 results = []
 
-
-print("⏱️ Préchargement du modèle LLM...")
-try:
-    subprocess.run(
-        ["docker", "exec", "-i", "ollama", "ollama", "run", "gemma:2b"],
-        input="Dis bonjour.",
-        text=True,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        timeout=120
-    )
-    print("✅ Modèle préchauffé")
-except Exception as e:
-    print(f"⚠️ Erreur pendant le préchauffage : {e}")
-
-
+# Evaluation des réponses du LLM + RAG sur les 5 questions
 for i, (row_id, question, expected_answer) in enumerate(examples, 1):
     print(f"\n ({i}/5) Question (id={row_id}) : {question}")
 
