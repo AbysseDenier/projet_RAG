@@ -2,19 +2,20 @@
 
 ## Objectifs
 
-Ce projet met en œuvre un système de **RAG** (Retrieval-Augmented Generation) **100% local**, utilisant :
-- un **LLM local** (Gemma via Ollama),
-- une **base de connaissances vectorielle** (PostgreSQL + pgvector),
-- et des scripts Python pour interroger le LLM avec enrichissement contextuel.
+Mettre en place un système **RAG (Retrieval-Augmented Generation)** entièrement **local**, combinant :
+- un **LLM local** (`gemma:2b` via Ollama),
+- une **base vectorielle PostgreSQL + pgvector**,
+- des scripts Python pour indexer et interroger des documents ou des jeux de données,
+- une **évaluation automatique** des performances avec métriques.
 
 ## Technologies utilisées
 
 - Docker & Docker Compose
-- PostgreSQL + extension `pgvector`
+- PostgreSQL + pgvector
 - Ollama (`gemma:2b`)
-- Python 3.11
+- Python 3
 - Sentence Transformers (`all-MiniLM-L6-v2`)
-- `psycopg2`, `requests`
+- `psycopg2`, `requests`, `datasets`, `csv`
 
 ## Installation et exécution du projet
 
@@ -96,8 +97,29 @@ Paris est la capitale de la France.
 Ce document est donné comme référence.
 ```
 
-## Extensions possibles
+### 9. Indexation d’un dataset HuggingFace (rag-dataset-12000)
+Ingestion des exemples :
+```bash
+python ingest_dataset.py
+```
+Ce script :
+- télécharge rag-dataset-12000 via HuggingFace
+- insère 100 exemples dans la table dataset avec vecteurs
+- supprime les anciennes données de la table dataset
 
-- Ajouter LangChain pour orchestrer les étapes RAG
-- Indexer un dataset HuggingFace (ex. : rag-dataset-12000)
-- Ajouter une interface web simple (Streamlit, Flask)
+### 10. Évaluation automatique du RAG sur le dataset
+```bash
+python rag_query_and_evaluate_dataset.py
+```
+Ce script :
+- sélectionne 5 questions de la table dataset aléatoirement
+- interroge le LLM via RAG
+- compare la réponse générée à la réponse attendue
+- calcule une similarité cosinus
+- exporte les résultats dans evaluation_rag_dataset.csv
+
+Exemple de sortie dans le terminal :
+(1/5) Question : What is the Berry Export Summary 2028 and its purpose?
+Réponse attendue : The Berry Export Summary 2028 is a dedicated export plan...
+Réponse RAG : The Berry Export Summary 2028 is a roadmap to grow exports...
+Similarité cosinus : 0.82
