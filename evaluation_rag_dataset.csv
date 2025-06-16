@@ -1,0 +1,20 @@
+question_id,question,expected_answer,rag_answer,cosine_similarity
+331,What are some of the original features of the 1930's detached bungalow?,"The original features of the 1930's detached bungalow include internal doors, picture rails, skirting boards, and possibly floorboards.","Le 1930's detached bungalow présente les seguintes originalements :
+
+- Internal doors
+- Picture rails
+- Skirting boards
+- Arched entrance
+- Panelled doors and windows
+- Roof with uPVC double glazing",0.6876
+227,What is the impact of decreasing negative posts on social media?,Decreasing negative posts led to a rise in positive posts.,"The passage does not provide information about the impact of decreasing negative posts on social media, so I cannot answer this question from the provided context.",0.7123
+60,"What special event occurs in Moor of Icirrus if you have Keldeo, Cobalion, Virizion and Terrakion in your party?","If you have Keldeo, Cobalion, Virizion and Terrakion in your party, a special event will occur causing the event-only Pokemon Keldeo to learn Secret Sword and transform into its Resolute Forme.","If you have all four of the following Pokemon in your party: Keldeo, Cobalion, Virizion and Terrakion, a special event will occur. This event-only Pokemon Keldeo will learn Secret Sword and transform into its Resolute Forme.",0.8987
+292,What is the main challenge in becoming proficient at using the command line according to the context?,The main challenge in becoming proficient at using the command line is the time it takes to learn and master it.,The main challenge in becoming proficient at using the command line according to the context is the need for significant time and effort in searching for clues and reading documentation to discover which command to use or configuration file to tweak to some particular end.,0.8515
+332,What are some of the notable changes in the T-Mobile Moto X update?,"The notable changes in the T-Mobile Moto X update include substantial support for services like printing photos, Google Docs, Gmail messages and other content via Wi-Fi, Bluetooth and hosted services such as HP ePrinters and Google Cloud Print. It also fixed all the bugs identified during the preliminary runs, including the ones that caused a few users to experience short battery life after upgrading to KitKat. Another bug that caused delays in synchronizing email services like Microsoft Exchange was resolved.","L'update du T-Mobile Moto X inclut des fonctionnalités telles que :
+
+- Augmentation de la résolution à 4.7 pouces
+- Processeur Qualcomm Snapdragon S4 à 1.5 GHz
+- Android 4.0 Ice Cream
+- Support pour les services de printage, Google Docs et Gmail
+- Résolution de l'écran : 1280x720 pixels
+- Mise à niveau à 161.44.25",0.5487

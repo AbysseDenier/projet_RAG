@@ -12,7 +12,7 @@ conn = psycopg2.connect(
 )
 cursor = conn.cursor()
 
-# Créer table
+# Créer table documents
 cursor.execute("""
     CREATE EXTENSION IF NOT EXISTS vector;
 
@@ -30,7 +30,7 @@ conn.commit()
 # modèle d'embedding
 model = SentenceTransformer('all-MiniLM-L6-v2')  # léger (~100 Mo)
 
-# Ingestion des fichiers dans documents/
+# Ingestion des fichiers de documents/
 document_dir = "documents"
 
 for file_name in os.listdir(document_dir):

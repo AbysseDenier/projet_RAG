@@ -21,7 +21,7 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 # prompt utilisateur
 prompt = input("Pose ta question : ")
 
-# prompt embedding
+# calcul embedding du prompt
 prompt_embedding = model.encode(prompt).tolist()
 
 # Requête SQL pgvector = top 3 documents les plus proches (selon cosine distance)
