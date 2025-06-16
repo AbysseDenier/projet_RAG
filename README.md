@@ -119,7 +119,9 @@ Ce script :
 - exporte les résultats dans evaluation_rag_dataset.csv
 
 Exemple de sortie dans le terminal :
+```
 (1/5) Question : What is the Berry Export Summary 2028 and its purpose?
 Réponse attendue : The Berry Export Summary 2028 is a dedicated export plan...
 Réponse RAG : The Berry Export Summary 2028 is a roadmap to grow exports...
 Similarité cosinus : 0.82
+```
